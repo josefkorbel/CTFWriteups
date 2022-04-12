@@ -2,6 +2,14 @@
 
 As one could guess from the challenge title, this was whitebox Java deserialization challenge where the deserialization classes were limited. The solution was to built a custom gadget chain from custom classes allowed in whitelist. The exploit had two phases and consisted of two deserializations in two different security context.
 
+Packed with the challenge was a `Dockerfile` na `jar` file of the application itself.
+
+![structure](./images/projectstructure.png)
+
+after decompilation with procyon we get the following classes.
+
+![structureunpack](./images/projectstructureunpacked.png)
+
 Challenge had a web interface where you could submit and view questions.
 
 ![webinterface](./images/index.png)
@@ -416,4 +424,5 @@ public static void main(String[] args) throws Exception {
 ```
 
 compile and run this, send this generated payload as cookie value `latest_question` to path `/latest_question` and voila, you will get a reverse shell.
+
 ![rev](./images/rev.png)
